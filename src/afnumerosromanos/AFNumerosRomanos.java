@@ -21,23 +21,32 @@ public class AFNumerosRomanos {
         
         Scanner scan = new Scanner(System.in);
         AutomataFinito af = new AutomataFinito();
-        System.out.println("Por favor ingrese un número romano ");
-        String numRomano = scan.nextLine();
-        if(!af.isValid(numRomano))
+        String o = "s";
+        while(o.equals("s"))
         {
-            System.out.println("Los caracteres ingresados no son validos ");
-            return;
+            System.out.println("Por favor ingrese un número romano ");
+            String numRomano = scan.nextLine();
+            numRomano=numRomano.toUpperCase();
+            if(!af.isValid(numRomano))
+            {
+                System.out.println("Los caracteres ingresados no son validos ");
+                return;
+            }
+            af.numRomano=numRomano;
+            boolean response = af.isSuccess();
+            if(response)
+            {
+                System.out.println("Número romano valido ");
+            }
+            else
+            {
+                System.out.println("Número romano NO invalido");
+            }
+            
+             System.out.println("¿Desea ingresar otro número romano ? Sí (s) o presione otra tecla en caso contrario");
+             o= scan.nextLine();
         }
-        af.numRomano=numRomano;
-        boolean response = af.isSuccess();
-        if(response)
-        {
-         System.out.println("Número romano valido ");
-        }
-        else
-        {
-             System.out.println("Número romano invalido");
-        }
+        
     }
     
 }
