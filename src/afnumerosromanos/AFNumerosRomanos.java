@@ -5,6 +5,8 @@
  */
 package afnumerosromanos;
 
+import java.util.Scanner;
+
 /**
  *
  * @author jhon
@@ -16,6 +18,26 @@ public class AFNumerosRomanos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Scanner scan = new Scanner(System.in);
+        AutomataFinito af = new AutomataFinito();
+        System.out.println("Por favor ingrese un número romano ");
+        String numRomano = scan.nextLine();
+        if(!af.isValid(numRomano))
+        {
+            System.out.println("Los caracteres ingresados no son validos ");
+            return;
+        }
+        af.numRomano=numRomano;
+        boolean response = af.isSuccess();
+        if(response)
+        {
+         System.out.println("Número romano valido ");
+        }
+        else
+        {
+             System.out.println("Número romano invalido");
+        }
     }
     
 }
